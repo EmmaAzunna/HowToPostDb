@@ -23,37 +23,37 @@ namespace HowToPostDb.Controllers
 
         // GET: api/Employee
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDb>>> GetUserDb()
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployee()
         {
-            return await _context.UserDb.ToListAsync();
+            return await _context.Employee.ToListAsync();
         }
 
         // GET: api/Employee/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserDb>> GetUserDb(int? id)
+        public async Task<ActionResult<Employee>> GetEmployee(int? id)
         {
-            var userDb = await _context.UserDb.FindAsync(id);
+            var employee = await _context.Employee.FindAsync(id);
 
-            if (userDb == null)
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            return userDb;
+            return employee;
         }
 
         // PUT: api/Employee/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUserDb(int? id, UserDb userDb)
+        public async Task<IActionResult> PutEmployee(int? id, Employee employee)
         {
-            if (id != userDb.EmpId)
+            if (id != employee.EmpId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(userDb).State = EntityState.Modified;
+            _context.Entry(employee).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace HowToPostDb.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserDbExists(id))
+                if (!EmployeeExists(id))
                 {
                     return NotFound();
                 }
@@ -78,33 +78,33 @@ namespace HowToPostDb.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<UserDb>> PostUserDb(UserDb userDb)
+        public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
         {
-            _context.UserDb.Add(userDb);
+            _context.Employee.Add(employee);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUserDb", new { id = userDb.EmpId }, userDb);
+            return CreatedAtAction("GetEmployee", new { id = employee.EmpId }, employee);
         }
 
         // DELETE: api/Employee/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<UserDb>> DeleteUserDb(int? id)
+        public async Task<ActionResult<Employee>> DeleteEmployee(int? id)
         {
-            var userDb = await _context.UserDb.FindAsync(id);
-            if (userDb == null)
+            var employee = await _context.Employee.FindAsync(id);
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            _context.UserDb.Remove(userDb);
+            _context.Employee.Remove(employee);
             await _context.SaveChangesAsync();
 
-            return userDb;
+            return employee;
         }
 
-        private bool UserDbExists(int? id)
+        private bool EmployeeExists(int? id)
         {
-            return _context.UserDb.Any(e => e.EmpId == id);
+            return _context.Employee.Any(e => e.EmpId == id);
         }
     }
 }

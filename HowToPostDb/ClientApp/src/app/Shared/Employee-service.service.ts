@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 
 
@@ -8,14 +10,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 
 export class ServiceService {
+ 
   constructor(private http: HttpClient) { }
-  httpOptions = { headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+   httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'json'
     })
-  }
+  };
+ 
   getData() {
-
-    return this.http.get('/api/Employee');  //https://localhost:44352/ webapi host url  
+    //get all Employee data
+    return this.http.get('/api/Employee');
+    //https://nairamarley.azurewebsites.net/ webapi host url
   }
 
   postData(formData) {

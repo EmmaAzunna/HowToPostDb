@@ -14,6 +14,6 @@ namespace HowToPostDb.Data
         {
         }
 
-        public DbSet<HowToPostDb.Model.UserDb> UserDb { get; set; }
+        public DbSet<HowToPostDb.Model.Employee> Employee { get; set; }
     }
 }

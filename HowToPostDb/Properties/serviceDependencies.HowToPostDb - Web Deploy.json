@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/crudserver1/databases/EmployeeContext-6227eb3e-8192-4a6a-a061-76a72be20b7b",
+      "type": "mssql.azure",
+      "connectionId": "EmployeeContext",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
